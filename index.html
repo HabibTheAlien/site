@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Personal portfolio of Habibur Rahman — Statistics graduate, developer and aspiring data professional."
+    />
+    <title>Habibur Rahman</title>
+
+    <style>
+      :root {
+        --bg: #07111f;
+        --bg2: #0b1728;
+        --card: rgba(15, 31, 52, 0.72);
+        --text: #eef6ff;
+        --muted: #9db0c6;
+        --line: rgba(255, 255, 255, 0.1);
+        --accent: #59d8ff;
+        --accent2: #8b7cff;
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+        --radius: 22px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+        background: radial-gradient(
+            circle at 15% 10%,
+            rgba(89, 216, 255, 0.13),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 85% 25%,
+            rgba(139, 124, 255, 0.13),
+            transparent 30%
+          ),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, 92%);
+        margin: auto;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        background: rgba(7, 17, 31, 0.72);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-inner {
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        font-weight: 900;
+        letter-spacing: -1.5px;
+        font-size: 1.55rem;
+        line-height: 1;
+      }
+
+      .logo span {
+        color: var(--accent);
+        text-shadow: 0 0 18px rgba(89, 216, 255, 0.55);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 26px;
+        list-style: none;
+        font-size: 0.95rem;
+        color: var(--muted);
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .menu {
+        display: none;
+        background: none;
+        border: 0;
+        color: var(--text);
+        font-size: 1.5rem;
+      }
+
+      section {
+        padding: 100px 0;
+        scroll-margin-top: 70px;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding-top: 120px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        padding: 7px 12px;
+        border: 1px solid rgba(89, 216, 255, 0.25);
+        border-radius: 999px;
+        color: var(--accent);
+        background: rgba(89, 216, 255, 0.06);
+        font-size: 0.84rem;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 7vw, 6.2rem);
+        line-height: 0.98;
+        letter-spacing: -4px;
+        margin-bottom: 22px;
+      }
+
+      h1 span {
+        background: linear-gradient(
+          100deg,
+          var(--accent),
+          #fff,
+          var(--accent2)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero p {
+        font-size: 1.12rem;
+        color: var(--muted);
+        max-width: 690px;
+      }
+
+      .actions {
+        display: flex;
+        gap: 14px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 18px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        transition: 0.25s;
+        cursor: pointer;
+      }
+
+      .btn.primary {
+        background: linear-gradient(135deg, var(--accent), #5a9cff);
+        color: #04101c;
+        border: 0;
+        font-weight: 750;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(89, 216, 255, 0.15);
+      }
+
+      .hero-card {
+        position: relative;
+        padding: 30px;
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        background: linear-gradient(
+          145deg,
+          rgba(17, 39, 65, 0.9),
+          rgba(10, 23, 40, 0.72)
+        );
+        box-shadow: var(--shadow);
+      }
+
+      .avatar {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        margin: 0 auto 22px;
+        font-size: 3rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        color: #07111f;
+        overflow: hidden;
+        border: 4px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 0 8px rgba(89, 216, 255, 0.06),
+          0 18px 45px rgba(0, 0, 0, 0.3);
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .hero-card h3 {
+        text-align: center;
+        font-size: 1.35rem;
+      }
+
+      .hero-card .role {
+        text-align: center;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .stat {
+        padding: 15px;
+        text-align: center;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.3rem;
+        color: var(--accent);
+      }
+
+      .stat small {
+        color: var(--muted);
+      }
+
+      .section-head {
+        margin-bottom: 40px;
+      }
+
+      .section-head h2 {
+        font-size: 2.4rem;
+        letter-spacing: -1px;
+      }
+
+      .section-head p {
+        color: var(--muted);
+        max-width: 700px;
+        margin-top: 7px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .two {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .three {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .card {
+        padding: 25px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--card);
+        box-shadow: var(--shadow);
+      }
+
+      .card h3 {
+        margin-bottom: 9px;
+      }
+
+      .card p {
+        color: var(--muted);
+      }
+
+      .timeline {
+        position: relative;
+        margin-left: 10px;
+        padding-left: 30px;
+        border-left: 1px solid var(--line);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 32px;
+      }
+
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .timeline-item:before {
+        content: "";
+        position: absolute;
+        left: -36px;
+        top: 6px;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 20px var(--accent);
+      }
+
+      .meta {
+        font-size: 0.84rem;
+        color: var(--accent);
+        margin-bottom: 5px;
+      }
+
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-top: 18px;
+      }
+
+      .tag {
+        padding: 8px 11px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.055);
+        border: 1px solid var(--line);
+        font-size: 0.88rem;
+      }
+
+      .project {
+        display: flex;
+        flex-direction: column;
+        min-height: 230px;
+      }
+
+      .project .tag {
+        align-self: flex-start;
+        margin-top: auto;
+      }
+
+      .contact {
+        text-align: center;
+      }
+
+      .contact p {
+        max-width: 650px;
+        margin: 10px auto 25px;
+        color: var(--muted);
+      }
+
+      .contact-box {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .contact a {
+        transition: 0.2s;
+      }
+
+      .contact a:hover {
+        color: var(--accent);
+      }
+
+      footer {
+        padding: 28px 0;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: 0.7s ease;
+      }
+
+      .reveal.show {
+        opacity: 1;
+        transform: none;
+      }
+
+      @media (max-width: 800px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 72px;
+          left: 0;
+          right: 0;
+          padding: 20px;
+          flex-direction: column;
+          background: rgba(7, 17, 31, 0.96);
+        }
+
+        .nav-links.open {
+          display: flex;
+        }
+
+        .menu {
+          display: block;
+        }
+
+        .hero-grid,
+        .two,
+        .three {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          letter-spacing: -2px;
+        }
+
+        .hero {
+          padding-top: 110px;
+        }
+
+        .hero-card {
+          max-width: 520px;
+          margin: auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="container nav-inner">
+        <a href="#home" class="logo">Habibur<span> Rahman</span></a>
+
+        <button class="menu" aria-label="Open menu">☰</button>
+
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#social-work">Social Work</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <!-- HERO SECTION -->
+      <section class="hero" id="home">
+        <div class="container hero-grid">
+          <div class="reveal">
+            <div class="eyebrow">Statistics • Technology • Research</div>
+
+            <h1>Hi, I'm <span>Habibur Rahman.</span></h1>
+
+            <p>
+              A Statistics graduate from Jagannath University, Dhaka, passionate
+              about data, technology, research and problem-solving. I build with
+              code and think with data.
+            </p>
+
+            <div class="actions">
+              <a class="btn primary" href="#projects"> Explore my work ↓ </a>
+
+              <a class="btn" href="CV.pdf" download> ↓ Download CV </a>
+            </div>
+          </div>
+
+          <aside class="hero-card reveal">
+            <div class="avatar">
+              <img
+                src="Formal.png"
+                alt="Professional photo of Habibur Rahman"
+                onerror="this.style.display='none';this.parentElement.textContent='HR'"
+              />
+            </div>
+
+            <h3>Statistics Graduate</h3>
+
+            <div class="role">Developer • Data Enthusiast • Researcher</div>
+
+            <div class="stats">
+              <div class="stat">
+                <strong>∞</strong>
+                <small>Curiosity</small>
+              </div>
+
+              <div class="stat">
+                <strong>1%</strong>
+                <small>Daily Growth</small>
+              </div>
+
+              <div class="stat">
+                <strong>24/7</strong>
+                <small>Learning</small>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ABOUT SECTION -->
+      <section id="about">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>About Me</h2>
+            <p>
+              Where statistics meets technology, research and analytical
+              problem-solving.
+            </p>
+          </div>
+
+          <div class="grid two">
+            <div class="card reveal">
+              <h3>My background</h3>
+              <p>
+                I studied Statistics at Jagannath University, Dhaka, developing
+                a strong foundation in statistical analysis, research
+                methodology, experimental design and multivariate methods.
+              </p>
+            </div>
+
+            <div class="card reveal">
+              <h3>My direction</h3>
+              <p>
+                My interests span data analysis, data science, software
+                development, machine learning, business intelligence,
+                statistical research and technology-driven problem-solving.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION SECTION -->
+      <section id="education">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Education & Journey</h2>
+            <p>
+              A foundation built around statistics, programming, research and
+              continuous learning.
+            </p>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item reveal">
+              <div class="meta">Jagannath University • Dhaka</div>
+
+              <h3>Bachelor's Degree in Statistics</h3>
+
+              <p>
+                Focused on statistics, research methodology, regression, ANOVA,
+                multivariate analysis, experimental design and applied data
+                analysis.
+              </p>
+            </div>
+
+            <div class="timeline-item reveal">
+              <div class="meta">Jagannath University</div>
+
+              <h3>Chinese Language Course</h3>
+
+              <p>
+                Completed a six-month Chinese language programme and received a
+                certificate from the Institute of Modern Languages (IML),
+                Jagannath University.
+              </p>
+            </div>
+
+            <div class="timeline-item reveal">
+              <div class="meta">Long-Term Vision</div>
+
+              <h3>Data + Technology + Leadership</h3>
+
+              <p>
+                Building a career that combines analytical thinking, technology
+                skills, leadership and meaningful contributions to society.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESEARCH SECTION -->
+      <section id="research">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Research</h2>
+
+            <p>
+              My undergraduate research exploring socioeconomic inequalities and
+              factors associated with modern contraceptive use in Bangladesh.
+            </p>
+          </div>
+
+          <article class="card reveal">
+            <div class="meta">Honours Research • Unpublished</div>
+
+            <h3>
+              Socioeconomic Inequalities And Determinants Of Modern
+              Contraceptive Use Among Ever-Married Women Of Reproductive Age In
+              Bangladesh
+            </h3>
+
+            <p>
+              This research was conducted as part of my Honours course. It has
+              not been published in a journal. I am sharing the PDF here so
+              readers can access and read the research.
+            </p>
+
+            <div class="actions" style="margin-top: 18px">
+              <a
+                class="btn primary"
+                href="research.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                Read Research PDF ↗
+              </a>
+
+              <a class="btn" href="research.pdf" download>
+                ↓ Download Research
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SKILLS SECTION -->
+      <section id="skills">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Skills & Toolkit</h2>
+
+            <p>
+              A cross-disciplinary toolkit spanning programming, statistics,
+              data and creative technology.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="skills">
+              <span class="tag">Python</span>
+              <span class="tag">R</span>
+              <span class="tag">C++</span>
+              <span class="tag">C</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">SQL / MySQL</span>
+              <span class="tag">SPSS</span>
+              <span class="tag">Stata</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">Jupyter Notebook</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">LaTeX</span>
+              <span class="tag">MERN Stack</span>
+              <span class="tag">React Native</span>
+              <span class="tag">Statistical Modeling</span>
+              <span class="tag">Regression</span>
+              <span class="tag">ANOVA</span>
+              <span class="tag">Multivariate Analysis</span>
+              <span class="tag">Experimental Design</span>
+              <span class="tag">Data Visualization</span>
+              <span class="tag">Photoshop</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTERESTS SECTION -->
+      <section id="interests">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Interests & Hobbies</h2>
+
+            <p>
+              The things I enjoy exploring beyond academics and professional
+              work.
+            </p>
+          </div>
+
+          <div class="grid three">
+            <div class="card reveal">
+              <h3>💻 Coding</h3>
+
+              <p>
+                I enjoy building software, experimenting with technologies and
+                turning ideas into practical applications.
+              </p>
+            </div>
+
+            <div class="card reveal">
+              <h3>⚽ Football</h3>
+
+              <p>
+                Football is one of my favorite ways to stay engaged, competitive
+                and connected with the game.
+              </p>
+            </div>
+
+            <div class="card reveal">
+              <h3>📊 Data & Research</h3>
+
+              <p>
+                I enjoy statistics, analytical thinking, research and
+                discovering insights from data.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS SECTION -->
+      <section id="projects">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Websites & Projects</h2>
+
+            <p>
+              A showcase of the digital products, applications and research
+              projects I have built or worked on.
+            </p>
+          </div>
+
+          <div class="grid three">
+            <article class="card project reveal">
+              <h3>Web Project 01</h3>
+
+              <p>
+                Add your website name and a short description here. This card is
+                ready for your live website link.
+              </p>
+
+              <div class="actions" style="margin-top: 18px">
+                <a class="btn primary" href="#" target="_blank" rel="noopener">
+                  View Website ↗
+                </a>
+              </div>
+
+              <span class="tag">Web Development</span>
+            </article>
+
+            <article class="card project reveal">
+              <h3>Web / App Project 02</h3>
+
+              <p>
+                Add another website, MERN application or React Native project
+                here with its live demo or repository.
+              </p>
+
+              <div class="actions" style="margin-top: 18px">
+                <a class="btn primary" href="#" target="_blank" rel="noopener">
+                  View Project ↗
+                </a>
+              </div>
+
+              <span class="tag">MERN • React Native</span>
+            </article>
+
+            <article class="card project reveal">
+              <h3>Lifestyle & Female Fertility</h3>
+
+              <p>
+                Research direction exploring the impact of lifestyle factors on
+                female fertility across rural and urban areas of Bangladesh.
+              </p>
+
+              <span class="tag">Statistical Research</span>
+            </article>
+
+            <article class="card project reveal">
+              <h3>Modern Contraceptive Use</h3>
+
+              <p>
+                Research examining socioeconomic inequalities and determinants
+                of modern contraceptive use among ever-married women in
+                Bangladesh.
+              </p>
+
+              <span class="tag">Data Analysis</span>
+            </article>
+
+            <article class="card project reveal">
+              <h3>Data Analysis Projects</h3>
+
+              <p>
+                Statistical analysis using Python, R, SPSS and related tools for
+                modeling, visualization and research.
+              </p>
+
+              <span class="tag">Python • R • SPSS</span>
+            </article>
+
+            <article class="card project reveal">
+              <h3>More Projects Coming</h3>
+
+              <p>
+                A growing collection of coding, data, research and technology
+                projects built through continuous learning.
+              </p>
+
+              <span class="tag">Continuous Learning</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOCIAL WORK SECTION -->
+      <section id="social-work">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Social Work & Leadership</h2>
+
+            <p>
+              Contributing to a healthier, safer and more responsible university
+              community.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="meta">Jagannath University</div>
+
+            <h3>
+              President (2024–2025) | Jagannath University Anti-Drug Forum
+            </h3>
+
+            <p>
+              I have served as President of the Jagannath University Anti-Drug
+              Forum, taking part in awareness, leadership and social initiatives
+              focused on preventing drug abuse and encouraging positive choices
+              among students and the wider community.
+            </p>
+
+            <div class="skills">
+              <span class="tag">Leadership</span>
+              <span class="tag">Social Awareness</span>
+              <span class="tag">Student Engagement</span>
+              <span class="tag">Community Service</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section id="contact" class="contact">
+        <div class="container reveal">
+          <div class="section-head">
+            <h2>Let's Connect</h2>
+
+            <p>
+              Interested in statistics, technology, research or programming?
+              Feel free to reach out.
+            </p>
+          </div>
+
+          <div class="contact-box">
+            <a
+              class="btn primary"
+              href="mailto:habibur.jnu.rahman@gmail.com?subject=Hello%20Habibur"
+            >
+              ✉ Email Me
+            </a>
+
+            <a
+              class="btn"
+              href="https://github.com/HabibTheAlien"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ⌘ GitHub
+            </a>
+          </div>
+
+          <div class="grid three" style="margin-top: 24px; text-align: left">
+            <div class="card">
+              <h3>📧 Email</h3>
+
+              <p style="margin-top: 8px; overflow-wrap: anywhere">
+                <a
+                  href="mailto:habibur.jnu.rahman@gmail.com?subject=Hello%20Habibur"
+                >
+                  habibur.jnu.rahman@gmail.com
+                </a>
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>📱 Phone</h3>
+
+              <p style="margin-top: 8px">
+                <a href="tel:+8801581524585">+8801581524585</a>
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>💻 GitHub</h3>
+
+              <p style="margin-top: 8px; overflow-wrap: anywhere">
+                <a
+                  href="https://github.com/HabibTheAlien"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  github.com/HabibTheAlien
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        © <span id="year"></span> Habibur Rahman. All Rights Reserved. Crafted
+        with care and creativity.
+      </div>
+    </footer>
+
+    <script>
+      const menu = document.querySelector(".menu");
+      const links = document.querySelector(".nav-links");
+
+      menu.addEventListener("click", () => {
+        links.classList.toggle("open");
+      });
+
+      document.querySelectorAll(".nav-links a").forEach((a) => {
+        a.addEventListener("click", () => {
+          links.classList.remove("open");
+        });
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("show");
+            }
+          }),
+        { threshold: 0.12 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => {
+        observer.observe(el);
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
